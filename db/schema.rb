@@ -39,6 +39,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_27_231543) do
   create_table "users", force: :cascade do |t|
     t.string "username"
     t.string "password_digest"
+    t.string "first_name"
+    t.string "last_name"
+    t.string "bio"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -48,5 +51,5 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_27_231543) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
-  add_foreign_key "users", "animes", "favorites", "watchlists"
+  add_foreign_key "animes", "users", "favorites", "watchlists"
 end

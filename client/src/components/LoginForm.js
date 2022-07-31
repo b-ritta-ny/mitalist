@@ -1,6 +1,6 @@
 import {useState} from "react";
 
-function Login({onLogin}) {
+function LoginForm({onLogin}) {
     const [username, setUsername] = useState("");
 
     function handleSubmit(e) {
@@ -28,4 +28,4 @@ function Login({onLogin}) {
       );
 }
 
-export default Login;
+export default LoginForm;

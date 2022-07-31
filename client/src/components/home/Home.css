@@ -1,0 +1,79 @@
+.homebox-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-end;
+}
+.top-homebox {
+  width: 60%;
+  color: white;
+  height: 90vh;
+  display: flex;
+  flex-direction: column;
+}
+.welcome-title {
+  font-size: 65px;
+  margin: 0;
+}
+.welcome-paragraph {
+  font-size: 14px;
+  font-weight: bolder;
+  margin-top: 0;
+}
+.mid-left-div {
+  margin: 15px;
+}
+
+.mid-homebox {
+  background: radial-gradient(
+    circle,
+    rgba(52, 175, 210, 1) 23%,
+    rgba(177, 63, 165, 1) 95%
+  );
+  color: white;
+  height: 60vh;
+  display: flex;
+}
+.middle-paragraph {
+  font-size: 16px;
+  margin: 15px 25px;
+}
+.bottom-div {
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.quote-div {
+  align-self: center;
+  font-family: "Macondo", cursive;
+  margin: 40px 0;
+}
+.middle-image {
+  width: 400px;
+  height: 100%;
+}
+.lower-bottom-div {
+  display: flex;
+  flex-direction: column;
+}
+.lower-bottom-div > h1 {
+  align-self: center;
+  margin: 40px 0;
+}
+.lower-image-div {
+  display: flex;
+  justify-content: space-around;
+  margin: 15px 15px;
+}
+.lower-image {
+  width: 200px;
+}
+.lower-paragraph-div {
+  margin: 20px 40px;
+}
+.quote-author {
+  margin: 0;
+  font-size: 15px;
+}

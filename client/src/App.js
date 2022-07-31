@@ -1,9 +1,12 @@
 import { useState, useEffect } from "react";
-// import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { Switch, Route, Router } from "react-router-dom";
 import './App.css';
-import Navbar from "./components/Navbar";
-// import Login from "./components/Login";
-import Auth from "./components/Auth";
+import Home from "./components/home/Home";
+import About from "./components/About";
+import Favorites from "./components/Favorites";
+import Navbar from './components/Navbar';
+import Login from './pages/Login';
+// import Auth from "./components/Auth";
 
 function App() {
   // const [count, setCount] = useState(0);
@@ -22,34 +25,26 @@ function App() {
     });
   }, []);
 
-  if (user) {
-    <div>
-      <h2>Welcome, {user.username}!</h2>;
-      <Navbar />
-    </div>
-  } else {
-    return (
-      // <BrowserRouter>
-        // <div className="App">
-          // <Switch>
-          // <Route path="/login">
-          <div>            
-            <Auth setCurrentUser={setUser} />
+  if (!user) return <Login onLogin={setUser} />;
 
-            {/* <Login onLogin={setUser} /> */}
-          </div>
-          // </Route>
-            // <Route path="/testing">
-              // <h1>Test Route</h1>
-            // </Route>
-            // {/* <Route path="/">
-              // <h1>Page Count: {count}</h1>
-            // </Route> */}
-      //     </Switch>
-      //   </div>
-      // </BrowserRouter>
-    );
-  }
+    return (
+      <div className="App">
+      <Router>
+        <Navbar user={user} setUser={setUser} />
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route exact path="/about" component={About} />
+          <Route exact path="/favorites">
+            <Favorites user={user} setUser={setUser} />
+          </Route>
+          <Route exact path="/login">
+            <Login user={user} onLogin={setUser} />
+          </Route>
+        </Switch>
+      </Router>
+    </div>
+    )
+  
 }
 
 

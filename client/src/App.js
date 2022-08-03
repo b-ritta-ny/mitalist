@@ -18,7 +18,7 @@ function App() {
   //     .then((data) => setCount(data.count));
   // }, []);
   useEffect(() => {
-    fetch("/me").then((response) => {
+    fetch("/auth").then((response) => {
       if (response.ok) {
         response.json().then((user) => setUser(user));
       }

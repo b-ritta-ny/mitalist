@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-  namespace :api do 
+
   # Defines the root path route ("/")
   # root "articles#index"
   
@@ -8,25 +8,26 @@ Rails.application.routes.draw do
   # get '/hello', to: 'application#hello_world'
 
   # user creation & authentication
-    post "/signup", to: "users#create"
-    post "/login", to: "sessions#create"
-    get "/auth", to: "users#show"
-    delete "/logout", to: "sessions#destroy"
+  post "/signup", to: "users#create"
+  post "/login", to: "sessions#create"
+  get "/auth", to: "users#show"
+  delete "/logout", to: "sessions#destroy"
 
-    resources :users, only: [:show, :create]
+  resources :users, only: [:show, :create]
 
-    resources :users, shallow: true do
-      resources :animes, only: [:index, :show, :create]
-      resources :favorites, only: [:index, :create]
-      resources :watchlists, only: :index
-    end
+  resources :users, shallow: true do
+  resources :animes, only: [:index, :show, :create]
+  resources :favorites, only: [:index, :create]
+  resources :watchlists, only: :index
+
+
     # 
     # get 'users/:user_id/animes', to: 'animes#index'
     # post 'users/:user_id/animes/new', to: 'animes#create'
 
-  end
+
   # fallback route 
-  # get '*path',
-  #     to: 'fallback#index',
-  #     constraints: ->(req) { !req.xhr? && req.format.html? }
+  get '*path', to: 'fallback#index', constraints: ->(req) { !req.xhr? && req.format.html? }
+  
 end
+

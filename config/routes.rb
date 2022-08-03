@@ -28,6 +28,6 @@ Rails.application.routes.draw do
 
   # fallback route 
   get '*path', to: 'fallback#index', constraints: ->(req) { !req.xhr? && req.format.html? }
-  
+  end
 end
 

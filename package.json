@@ -1,7 +1,7 @@
 {
     "name": "mitalist",
     "description": "Build scripts for Heroku",
-    "homepage": ".",
+    "homepage": "/login",
     "engines": {
       "node": ">= 14"
     },

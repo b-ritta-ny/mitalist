@@ -10,7 +10,6 @@ class AnimesController < ApplicationController
     render json: anime, status: :created
   end
     
-
   def update
     respond_to do |format|
       if @anime.update(anime_params)
@@ -19,6 +18,7 @@ class AnimesController < ApplicationController
       else
         format.html { render :edit }
         format.json { render json: @anime.errors, status: :unprocessable_entity }
+      end
     end
   end
 

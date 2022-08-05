@@ -2,8 +2,7 @@ import { useState, useEffect } from "react";
 import { Switch, Route, Router } from "react-router-dom";
 import './App.css';
 import Home from "./components/home/Home";
-import About from "./components/About";
-import Favorites from "./components/Favorites";
+import Favorites from "./pages/Favorites";
 import Navbar from './components/Navbar';
 import Login from './pages/Login';
 // import Auth from "./components/Auth";
@@ -33,7 +32,6 @@ function App() {
         <Navbar user={user} setUser={setUser} />
         <Switch>
           <Route exact path="/" component={Home} />
-          <Route exact path="/about" component={About} />
           <Route exact path="/favorites">
             <Favorites user={user} setUser={setUser} />
           </Route>

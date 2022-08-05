@@ -15,7 +15,7 @@ function Login({ onLogin }) {
           <LoginForm onLogin={onLogin} />
           <Divider />
           <p>
-            Don't have an account? &nbsp;
+            New User? &nbsp;
             <Button color="secondary" onClick={() => setShowLogin(false)}>
               Sign Up
             </Button>
@@ -26,7 +26,7 @@ function Login({ onLogin }) {
           <SignUpForm onLogin={onLogin} />
           <Divider />
           <p>
-            Already have an account? &nbsp;
+            Existing user? &nbsp;
             <Button color="secondary" onClick={() => setShowLogin(true)}>
               Log In
             </Button>
@@ -38,9 +38,12 @@ function Login({ onLogin }) {
 }
 
 const Logo = styled.h1`
-  font-family: "Permanent Marker", cursive;
-  font-size: 3rem;
-  color: deeppink;
+  font-family: Avant Garde,Avantgarde,Century Gothic,CenturyGothic,AppleGothic,sans-serif; 
+  font-size: 6rem;
+  font-variant: small-caps;
+  font-weight: 100;
+  letter-spacing: .5rem;
+  color: #c71568;
   margin: 8px 0 16px;
 `;
 

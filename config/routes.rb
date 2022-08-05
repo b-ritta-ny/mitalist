@@ -16,9 +16,10 @@ Rails.application.routes.draw do
   resources :users, only: [:show, :create]
 
   resources :users, shallow: true do
-  resources :animes, only: [:index, :show, :create]
-  resources :favorites, only: [:index, :create]
-  resources :watchlists, only: :index
+    resources :animes, only: [:index, :show, :create]
+    resources :favorites, only: [:index, :create]
+    resources :watchlists, only: :index
+  end
 
 
     # 

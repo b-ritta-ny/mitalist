@@ -22,7 +22,7 @@ function App() {
   }, []);
 
   if (!user) return <Login onLogin={setUser} />;
-  if (user) return <AnimeList user={user} setUser={setUser} />
+  if (user) return <Home user={user} setUser={setUser} />
 
     return (
       <div className="App">

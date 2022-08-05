@@ -21,7 +21,6 @@ Rails.application.routes.draw do
     resources :watchlists, only: :index
   end
 
-
     # 
     # get 'users/:user_id/animes', to: 'animes#index'
     # post 'users/:user_id/animes/new', to: 'animes#create'
@@ -29,6 +28,6 @@ Rails.application.routes.draw do
 
   # fallback route 
   get '*path', to: 'fallback#index', constraints: ->(req) { !req.xhr? && req.format.html? }
-  end
+  
 end
 

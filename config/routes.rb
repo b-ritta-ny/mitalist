@@ -10,20 +10,20 @@ Rails.application.routes.draw do
   # user creation & authentication
   post "/signup", to: "users#create"
   post "/login", to: "sessions#create"
-  get "/auth", to: "users#show"
+  get "/me", to: "users#show"
   delete "/logout", to: "sessions#destroy"
 
   resources :users, only: [:show, :create]
 
-  resources :users, shallow: true do
-    resources :animes, only: [:index, :show, :create]
-    resources :favorites, only: [:index, :create]
-    resources :watchlists, only: :index
-  end
+  # resources :users, shallow: true do
+  resources :animes, only: [:index, :show, :create]
+  # resources :favorites, only: [:index, :create]
+  #   resources :watchlists, only: :index
+  # end
 
     # 
-    # get 'users/:user_id/animes', to: 'animes#index'
-    # post 'users/:user_id/animes/new', to: 'animes#create'
+  get 'users/:user_id/my-anime', to: 'animes#index'
+  post 'users/:user_id/animes/new', to: 'animes#create'
 
 
   # fallback route 

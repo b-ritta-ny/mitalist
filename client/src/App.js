@@ -1,10 +1,12 @@
 import { useState, useEffect } from "react";
 import { Switch, Route, Router } from "react-router-dom";
 import './App.css';
-import Home from "./components/home/Home";
-import Favorites from "./pages/Favorites";
 import Navbar from './components/Navbar';
 import Login from './pages/Login';
+import Home from "./components/home/Home";
+import AnimeList from "./pages/AnimeList"
+import Favorites from "./pages/Favorites";
+
 // import Auth from "./components/Auth";
 
 function App() {
@@ -17,7 +19,7 @@ function App() {
   //     .then((data) => setCount(data.count));
   // }, []);
   useEffect(() => {
-    fetch("/auth").then((response) => {
+    fetch("/me").then((response) => {
       if (response.ok) {
         response.json().then((user) => setUser(user));
       }
@@ -25,22 +27,22 @@ function App() {
   }, []);
 
   if (!user) return <Login onLogin={setUser} />;
+  // if (user) return <AnimeList user={user} setUser={setUser} />
 
     return (
       <div className="App">
-      <Router>
-        <Navbar user={user} setUser={setUser} />
-        <Switch>
-          <Route exact path="/" component={Home} />
-          <Route exact path="/favorites">
-            <Favorites user={user} setUser={setUser} />
-          </Route>
-          <Route exact path="/login">
-            <Login user={user} onLogin={setUser} />
-          </Route>
-        </Switch>
-      </Router>
-    </div>
+        <Router>
+          <Navbar user={user} setUser={setUser} />
+            <Switch>
+              <Route exact path="/">
+                <Home />
+              </Route>
+              <Route exact path="/my-anime">
+                <AnimeList user={user} setUser={setUser}/>
+              </Route>
+            </Switch>
+        </Router>
+      </div>
     )
   
 }

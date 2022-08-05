@@ -10,24 +10,19 @@ import Favorites from "./pages/Favorites";
 // import Auth from "./components/Auth";
 
 function App() {
-  // const [count, setCount] = useState(0);
   const [user, setUser] = useState(null);
 
-  // useEffect(() => {
-  //   fetch("/hello")
-  //     .then((r) => r.json())
-  //     .then((data) => setCount(data.count));
-  // }, []);
   useEffect(() => {
-    fetch("/me").then((response) => {
-      if (response.ok) {
-        response.json().then((user) => setUser(user));
+    // auto-login
+    fetch("/me").then((r) => {
+      if (r.ok) {
+        r.json().then((user) => setUser(user));
       }
     });
   }, []);
 
   if (!user) return <Login onLogin={setUser} />;
-  // if (user) return <AnimeList user={user} setUser={setUser} />
+  if (user) return <AnimeList user={user} setUser={setUser} />
 
     return (
       <div className="App">
@@ -35,10 +30,10 @@ function App() {
           <Navbar user={user} setUser={setUser} />
             <Switch>
               <Route exact path="/">
-                <Home />
+                <AnimeList />
               </Route>
               <Route exact path="/my-anime">
-                <AnimeList user={user} setUser={setUser}/>
+                <AnimeList/>
               </Route>
             </Switch>
         </Router>

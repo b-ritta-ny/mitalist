@@ -12,24 +12,24 @@
   flex-direction: column;
 }
 .welcome-title {
+  font-family: Avant Garde, Avantgarde, Century Gothic, CenturyGothic,
+    AppleGothic, sans-serif;
   font-size: 65px;
   margin: 0;
+  color: #c71568;
 }
 .welcome-paragraph {
   font-size: 14px;
   font-weight: bolder;
   margin-top: 0;
+  color: black;
 }
 .mid-left-div {
   margin: 15px;
 }
 
 .mid-homebox {
-  background: radial-gradient(
-    circle,
-    rgba(52, 175, 210, 1) 23%,
-    rgba(177, 63, 165, 1) 95%
-  );
+  background: radial-gradient(circle, #c71568 23%, rgb(177, 63, 139) 95%);
   color: white;
   height: 60vh;
   display: flex;
@@ -51,7 +51,7 @@
   margin: 40px 0;
 }
 .middle-image {
-  width: 400px;
+  width: 700px;
   height: 100%;
 }
 .lower-bottom-div {

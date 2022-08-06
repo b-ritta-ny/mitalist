@@ -1,4 +1,4 @@
-import {useState} from "react";
+import { useState } from "react";
 import { Button, Error, Input, FormField, Label } from "../styles";
 
 function LoginForm({ onLogin }) {
@@ -53,11 +53,11 @@ function LoginForm({ onLogin }) {
           {isLoading ? "Loading..." : "Login"}
         </Button>
       </FormField>
-      {/* <FormField>
+      <FormField>
         {errors.map((err) => (
           <Error key={err}>{err}</Error>
         ))}
-      </FormField> */}
+      </FormField>
     </form>
   );
 }

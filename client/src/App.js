@@ -1,49 +1,44 @@
-import { useState, useEffect } from "react";
-import { Switch, Route, Router } from "react-router-dom";
 import './App.css';
-import Navbar from './components/Navbar';
-import Login from './pages/Login';
+import React, { useEffect, useState } from "react";
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Home from "./components/home/Home";
-import AnimeList from "./pages/AnimeList"
-import Favorites from "./pages/Favorites";
-
-// import Auth from "./components/Auth";
+import Navbar from './components/NavBar/NavBar';
+import Login from './pages/Login';
 
 function App() {
   const [user, setUser] = useState(null);
 
-  useEffect(() => {
-    // auto-login
-    fetch("/me").then((r) => {
-      if (r.ok) {
-        r.json().then((user) => setUser(user));
+  useEffect(() => { 
+     //auto-login
+    fetch("/me").then((res) => {
+      if (res.ok) {
+        res.json().then((user) => setUser(user)); 
       }
     });
   }, []);
 
-  if (!user) return <Login onLogin={setUser} />;
-  if (user) return <Home user={user} setUser={setUser} />
-
-    return (
-      <div className="App">
-        <Router>
-          <Navbar user={user} setUser={setUser} />
-            <Switch>
-              <Route exact path="/">
-                <AnimeList />
-              </Route>
-              <Route exact path="/my-anime">
-                <AnimeList/>
-              </Route>
-            </Switch>
-        </Router>
-      </div>
-    )
-  
+  return (
+    <div className="App">
+      <Router>
+        <Navbar user={user} setUser={setUser} />
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route exact path="/favorites">
+            {/* <Favorites user={user} setUser={setUser} /> */}
+          </Route>
+          <Route exact path="/signup">
+            {/* <Signup user={user} setUser={setUser} /> */}
+          </Route>
+          <Route exact path="/login">
+            <Login user={user} setUser={setUser} />
+          </Route>
+          <Route exact path="/animes">
+            {/* <Anime user={user} setUser={setUser} /> */}
+          </Route>
+        </Switch>
+      </Router>
+    </div>
+  );
 }
-
-
-
-  
 
 export default App;

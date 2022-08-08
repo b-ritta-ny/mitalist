@@ -1,73 +1,99 @@
 import { useState } from "react";
-import { useHistory } from "react-router";
+// import { useHistory } from "react-router";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import ReactMarkdown from "react-markdown";
-import { Button, Error, FormField, Input, Label, Textarea } from "../styles";
+import { Button, FormField, Input, Label, Textarea } from "../styles";
 
-function NewAnime({ user }) {
+function NewAnime({ user, onAddAnime }) {
 
     // const Fav = "★"
     // const notFav = "☆"
 
-    const [title, setTitle] = useState("One Piece");
-    const [genre, setGenre] = useState("Action, Adventure, Fantasy");
-    const [bio, setBio] = useState(`Monkey. D. Luffy refuses to let anyone or anything stand in the way of his quest to become the king of all pirates. With a course charted for the treacherous waters of the Grand Line and beyond, this is one captain who'll never give up until he's claimed the greatest treasure on Earth: the Legendary One Piece!
-    `);
-    const [image, setImage] = useState("https://img1.ak.crunchyroll.com/i/spire4/8056a82e973dde98ebb82abd39dc69731564519729_full.jpg")
-    const [studio, setStudio] = useState("Toei Animation")
-    //   const [episodes, setEpisodes] = useState(1028)
-    //   const [watching, setWatching] = useState(true)
-    //   const [finished, setFinished] = useState(false)
-    //   const [episodesWatched, setEpisodesWatched] = useState(1005)
-    const [favorite, setFavorite] = useState(true)
-
-    const [errors, setErrors] = useState([]);
+    // const [title, setTitle] = useState("One Piece");
+    // const [genre, setGenre] = useState("Action, Adventure, Fantasy");
+    // const [bio, setBio] = useState(`Monkey. D. Luffy refuses to let anyone or anything stand in the way of his quest to become the king of all pirates. With a course charted for the treacherous waters of the Grand Line and beyond, this is one captain who'll never give up until he's claimed the greatest treasure on Earth: the Legendary One Piece!
+    // `);
+    // const [image, setImage] = useState("https://img1.ak.crunchyroll.com/i/spire4/8056a82e973dde98ebb82abd39dc69731564519729_full.jpg")
+    // const [studio, setStudio] = useState("Toei Animation")
+    // //   const [episodes, setEpisodes] = useState(1028)
+    // //   const [watching, setWatching] = useState(true)
+    // //   const [finished, setFinished] = useState(false)
+    // //   const [episodesWatched, setEpisodesWatched] = useState(1005)
+    // const [favorite, setFavorite] = useState(null)
+    
+    
+    // const [errors, setErrors] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
-    const history = useHistory();
+    // const history = useHistory();
 
-    function handleSubmit(e) {
+    const [formData, setFormData] = useState({
+        title: "One Piece",
+        genre: "Action, Adventure, Fantasy",
+        bio: "Monkey. D. Luffy refuses to let anyone or anything stand in the way of his quest to become the king of all pirates. With a course charted for the treacherous waters of the Grand Line and beyond, this is one captain who'll never give up until he's claimed the greatest treasure on Earth: the Legendary One Piece!",
+        image: "https://img1.ak.crunchyroll.com/i/spire4/8056a82e973dde98ebb82abd39dc69731564519729_full.jpg",
+        studio: "Toei Animation",
+        // episodes: episodes,
+        // watching,
+        // finished,
+        // episodes_watched: episodesWatched,
+        // favorite: null,
+    });
+
+    
+
+    function handleChange(e) {
+        setFormData({
+            ...formData,
+            [e.target.name]: e.target.value,
+        });
+    }
+
+    function createAnime(e) {
         e.preventDefault();
+        sendAnimeToApi(formData);
+    }
+
+    function sendAnimeToApi(data) {
         setIsLoading(true);
         fetch("/animes", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
         },
-        body: JSON.stringify({
-            title,
-            genre,
-            bio,
-            image,
-            studio,
-            // episodes: episodes,
-            // watching,
-            // finished,
-            // episodes_watched: episodesWatched,
-            favorite,
-        }),
-        }).then((r) => {
-        setIsLoading(false);
-        if (r.ok) {
-            history.push("/");
-        } else {
-            r.json().then((err) => setErrors(err.errors));
-        }
+        body: JSON.stringify(data)
+        })
+        .then((res) => res.json())
+        .then((anime) => {
+            onAddAnime(anime);
+            setFormData({
+                title: "",
+                genre: "",
+                bio: "",
+                image: "",
+                studio: "",
+                // episodes: episodes,
+                // watching,
+                // finished,
+                // episodes_watched: episodesWatched,
+                // favorite: null,
+            });
         });
     }
+
 
     return (
         <Wrapper>
         <WrapperChild>
-            <h2>Create Recipe</h2>
-            <form onSubmit={handleSubmit}>
+            <h2>Add New Anime</h2>
+            <form onSubmit={(e) => createAnime(e)}>
             <FormField>
                 <Label htmlFor="title">Title</Label>
                 <Input
                 type="text"
                 id="title"
-                value={title}
-                onChange={(e) => setTitle(e.target.value)}
+                value={formData.title}
+                onChange={handleChange}
                 />
             </FormField>
             <FormField>
@@ -75,8 +101,8 @@ function NewAnime({ user }) {
                 <Input
                 type="text"
                 id="genre"
-                value={genre}
-                onChange={(e) => setGenre(e.target.value)}
+                value={formData.genre}
+                onChange={handleChange}
                 />
             </FormField>
             <FormField>
@@ -84,8 +110,8 @@ function NewAnime({ user }) {
                 <Input
                 type="text"
                 id="studio"
-                value={studio}
-                onChange={(e) => setStudio(e.target.value)}
+                value={formData.studio}
+                onChange={handleChange}
                 />
             </FormField>
             <FormField>
@@ -93,8 +119,8 @@ function NewAnime({ user }) {
                 <Textarea
                 id="bio"
                 rows="10"
-                value={bio}
-                onChange={(e) => setBio(e.target.value)}
+                value={formData.bio}
+                onChange={handleChange}
                 />
             </FormField>
             {/* <FormField>
@@ -111,8 +137,8 @@ function NewAnime({ user }) {
                 <Input
                 type="text"
                 id="image"
-                value={image}
-                onChange={(e) => setImage(e.target.value)}
+                value={formData.image}
+                onChange={handleChange}
                 />
             </FormField>
             <FormField>
@@ -120,33 +146,33 @@ function NewAnime({ user }) {
                     { favorite === true ? Fav : notFav} 
                 </Button> */}
                 <Label htmlFor="favorite">Favorite</Label>
-                <select onChange={(e) => setFavorite(e.target.value)}>
-                    <option value="true">Yes</option>
-                    <option value="false" selected>No</option>
+                <select onChange={handleChange}>
+                    <option value={formData.favorite}>Yes</option>
+                    <option value={formData.favorite} defaultValue={true}>No</option>
                 </select>
             </FormField>
             <FormField>
-                <Button color="primary" type="submit" as={Link} to="/my-anime">
+                <Button color="primary" type="submit" id="submitBtn" as={Link} to="/my-anime">
                 {isLoading ? "Loading..." : "Add Anime"}
                 </Button>
             </FormField>
-            <FormField>
+            {/* <FormField>
                 {errors.map((err) => (
                 <Error key={err}>{err}</Error>
                 ))}
-            </FormField>
+            </FormField> */}
             </form>
         </WrapperChild>
         <WrapperChild>
-            <Image src={image} alt="display image" />
-            <h1>{title}</h1>
+            <Image src={formData.image} alt="display image" />
+            <h1>{formData.title}</h1>
             <p>
-                <em>Genre: {genre}</em>
+                <em>Genre: {formData.genre}</em>
             </p>
             <p>
-                <em>Studio: {studio}</em>
+                <em>Studio: {formData.studio}</em>
             </p>
-            <ReactMarkdown>{bio}</ReactMarkdown>
+            <ReactMarkdown>{formData.bio}</ReactMarkdown>
         </WrapperChild>
         </Wrapper>
     );

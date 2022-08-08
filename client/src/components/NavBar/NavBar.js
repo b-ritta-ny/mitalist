@@ -47,7 +47,7 @@ export default function NavBar({ user, setUser }) {
                           <button onClick={handleLogoutClick} className="logout-button">Logout</button>
                       ) : (
                           <>
-                              <Link to="/signup" className='user-link'>Signup</Link>
+                              {/* <Link to="/signup" className='user-link'>Signup</Link> */}
                               <Link to="/login" className='user-link'>Login</Link>
                           </>
                       )}

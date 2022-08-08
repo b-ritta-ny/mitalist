@@ -21,23 +21,27 @@ function NewAnime({ user, onAddAnime }) {
     // //   const [finished, setFinished] = useState(false)
     // //   const [episodesWatched, setEpisodesWatched] = useState(1005)
     // const [favorite, setFavorite] = useState(null)
-    
+    const options = [
+        {value: '', text: 'Add to Favorites?'},
+        {value: 'No', text: 'No'},
+        {value: 'Yes', text: 'Yes'},
+    ];
     
     // const [errors, setErrors] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
     // const history = useHistory();
 
     const [formData, setFormData] = useState({
-        title: "One Piece",
-        genre: "Action, Adventure, Fantasy",
-        bio: "Monkey. D. Luffy refuses to let anyone or anything stand in the way of his quest to become the king of all pirates. With a course charted for the treacherous waters of the Grand Line and beyond, this is one captain who'll never give up until he's claimed the greatest treasure on Earth: the Legendary One Piece!",
-        image: "https://img1.ak.crunchyroll.com/i/spire4/8056a82e973dde98ebb82abd39dc69731564519729_full.jpg",
-        studio: "Toei Animation",
+        title: "",
+        genre: "",
+        bio: "",
+        image: "",
+        studio: "",
         // episodes: episodes,
         // watching,
         // finished,
         // episodes_watched: episodesWatched,
-        // favorite: null,
+        favorite: "",
     });
 
     
@@ -45,8 +49,9 @@ function NewAnime({ user, onAddAnime }) {
     function handleChange(e) {
         setFormData({
             ...formData,
-            [e.target.name]: e.target.value,
+            [e.target.id]: e.target.value,
         });
+        console.log(e.target.value);
     }
 
     function createAnime(e) {
@@ -76,7 +81,7 @@ function NewAnime({ user, onAddAnime }) {
                 // watching,
                 // finished,
                 // episodes_watched: episodesWatched,
-                // favorite: null,
+                favorite: "",
             });
         });
     }
@@ -92,6 +97,7 @@ function NewAnime({ user, onAddAnime }) {
                 <Input
                 type="text"
                 id="title"
+                placeholder="Anime Title"
                 value={formData.title}
                 onChange={handleChange}
                 />
@@ -101,6 +107,7 @@ function NewAnime({ user, onAddAnime }) {
                 <Input
                 type="text"
                 id="genre"
+                placeholder="Genre(s)"
                 value={formData.genre}
                 onChange={handleChange}
                 />
@@ -110,6 +117,7 @@ function NewAnime({ user, onAddAnime }) {
                 <Input
                 type="text"
                 id="studio"
+                placeholder="Anime Studio (ex: Bones, Kyoto Animation, MAPPA, etc...)"
                 value={formData.studio}
                 onChange={handleChange}
                 />
@@ -119,6 +127,7 @@ function NewAnime({ user, onAddAnime }) {
                 <Textarea
                 id="bio"
                 rows="10"
+                placeholder="Anime Synopsis"
                 value={formData.bio}
                 onChange={handleChange}
                 />
@@ -137,6 +146,7 @@ function NewAnime({ user, onAddAnime }) {
                 <Input
                 type="text"
                 id="image"
+                placeholder="Image Link (ex: https://img1.ak.crunchyroll.com/i/spire4/805...)"
                 value={formData.image}
                 onChange={handleChange}
                 />
@@ -145,14 +155,27 @@ function NewAnime({ user, onAddAnime }) {
                 {/* <Button color="primary" className='favorite-button' onClick={(e) => e.preventDefault}>
                     { favorite === true ? Fav : notFav} 
                 </Button> */}
-                <Label htmlFor="favorite">Favorite</Label>
-                <select onChange={handleChange}>
+                <Label htmlFor="favorite">Add to Favorites?</Label>
+                <select id="favorite" value={formData.favorite} onChange={handleChange}>
+                    {options.map(option => (
+                        <option key={option.value} value={option.value}>
+                            {option.text}
+                        </option>
+                    ))}
+                </select>
+                {/* <Checkbox 
+                type="checkbox"
+                id="favorite"
+                value={formData.favorite}
+                onChange={handleChange}/> */}
+
+                {/* <select onChange={handleChange} value={this.state.value}>
                     <option value={formData.favorite}>Yes</option>
                     <option value={formData.favorite} defaultValue={true}>No</option>
-                </select>
+                </select> */}
             </FormField>
             <FormField>
-                <Button color="primary" type="submit" id="submitBtn" as={Link} to="/my-anime">
+                <Button color="primary" type="submit" id="submitBtn" >
                 {isLoading ? "Loading..." : "Add Anime"}
                 </Button>
             </FormField>
@@ -165,7 +188,7 @@ function NewAnime({ user, onAddAnime }) {
         </WrapperChild>
         <WrapperChild>
             <Image src={formData.image} alt="display image" />
-            <h1>{formData.title}</h1>
+            <h1>{formData.title}</h1> 
             <p>
                 <em>Genre: {formData.genre}</em>
             </p>
@@ -193,6 +216,9 @@ function NewAnime({ user, onAddAnime }) {
 
     const WrapperChild = styled.div`
     flex: 1;
+    `;
+
+    const Checkbox = styled.input`
     `;
 
 export default NewAnime;

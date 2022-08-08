@@ -30,7 +30,7 @@ function App() {
             {/* <Signup user={user} setUser={setUser} /> */}
           </Route>
           <Route exact path="/login">
-            <Login user={user} setUser={setUser} />
+            <Login user={user} onLogin={setUser} />
           </Route>
           <Route exact path="/animes">
             {/* <Anime user={user} setUser={setUser} /> */}

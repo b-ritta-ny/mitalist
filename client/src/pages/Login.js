@@ -3,16 +3,19 @@ import styled from "styled-components";
 import LoginForm from "../components/LoginForm";
 import SignUpForm from "../components/SignUpForm";
 import { Button } from "../styles";
+import Home from "../components/home/Home";
 
-function Login({ onLogin }) {
+function Login({ user, onLogin }) {
   const [showLogin, setShowLogin] = useState(true);
+
+  if(user) return <Home />
 
   return (
     <Wrapper>
       <Logo>Mitalist</Logo>
       {showLogin ? (
         <>
-          <LoginForm onLogin={onLogin} />
+          <LoginForm user={user} onLogin={onLogin} />
           <Divider />
           <p>
             New User? &nbsp;

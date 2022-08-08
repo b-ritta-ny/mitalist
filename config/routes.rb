@@ -22,8 +22,8 @@ Rails.application.routes.draw do
   # end
 
     # 
-  get 'users/:user_id/my-anime', to: 'animes#index'
-  post 'users/:user_id/animes/new', to: 'animes#create'
+  get '/my-anime', to: 'animes#index'
+  post '/new', to: 'animes#create'
 
 
   # fallback route 

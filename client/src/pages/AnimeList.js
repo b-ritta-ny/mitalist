@@ -3,8 +3,9 @@ import ReactMarkdown from "react-markdown";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { Box, Button } from "../styles";
+import Login from "./Login";
 
-function AnimeList() {
+function AnimeList({user, setUser}) {
   const [animes, setAnimes] = useState([]);
 
   useEffect(() => {
@@ -12,6 +13,8 @@ function AnimeList() {
       .then((r) => r.json())
       .then(setAnimes);
   }, []);
+
+  if (!user) return <Login setUser={setUser} />;
 
   return (
     <Wrapper>
@@ -21,9 +24,10 @@ function AnimeList() {
             <Box>
               <h2>{anime.title}</h2>
               <p>
-                <em>Episodes: {anime.episodes} episodes</em>
-                &nbsp;·&nbsp;
-                <cite>By {anime.user.username}</cite>
+                <em>Genre: {anime.genre}</em>
+              </p>
+              <p>
+                <em>Studio: {anime.studio}</em>
               </p>
               <ReactMarkdown>{anime.bio}</ReactMarkdown>
             </Box>

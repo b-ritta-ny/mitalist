@@ -27,8 +27,8 @@ export default function NavBar({ user, setUser }) {
                             </Link>
                         </li>
                         <li className='nav-item'>
-                            <Link to='/animes' className='nav-links' onClick={handleClick}>
-                                Anime
+                            <Link to='/my-anime' className='nav-links' onClick={handleClick}>
+                                My Anime
                             </Link>
                         </li>
                         <li className='nav-item'>
@@ -36,11 +36,11 @@ export default function NavBar({ user, setUser }) {
                                 Favorites
                             </Link>
                         </li>
-                        <li className='nav-item'>
+                        {/* <li className='nav-item'>
                             <Link to='/about' className='nav-links' onClick={handleClick}>
                                 About
                             </Link>
-                        </li>
+                        </li> */}
                     </ul>
                     <div className='user-div'>
                       {user ? (

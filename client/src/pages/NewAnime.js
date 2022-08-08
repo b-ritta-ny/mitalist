@@ -41,10 +41,10 @@ function NewAnime({ user, onAddAnime }) {
         // watching,
         // finished,
         // episodes_watched: episodesWatched,
-        favorite: "",
+        favorite: false,
     });
 
-    
+
 
     function handleChange(e) {
         setFormData({

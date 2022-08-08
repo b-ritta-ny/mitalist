@@ -49,12 +49,12 @@ function AnimeList({user, setUser}) {
 
   return (
     <Wrapper>
+    <Button as={Link} to="/new">
+      Log a new Anime
+    </Button>
       {animes.length > 0 ? (
         animes.map((anime) => (
           <>
-            <Button as={Link} to="/new">
-              Log a new Anime
-            </Button>
             <Anime key={anime.id}>
               <Box>
                 <p>
@@ -74,7 +74,7 @@ function AnimeList({user, setUser}) {
         ))
       ) : (
         <>
-          <h2>No animes Found</h2>
+          <h2>No anime series yet!</h2>
           <Button as={Link} to="/new">
             Log a new Anime
           </Button>
@@ -87,6 +87,7 @@ function AnimeList({user, setUser}) {
 const Wrapper = styled.section`
   max-width: 800px;
   margin: 40px auto;
+  column-count: 2;
 `;
 
 const Anime = styled.article`

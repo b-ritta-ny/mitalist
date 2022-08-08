@@ -17,13 +17,33 @@ class AnimesController < ApplicationController
 
   def update
     anime = find_anime 
-    if @current_user.id == anime.user_id 
+    # if @current_user.id == anime.user_id 
       anime.update!(anime_params)
       render json: anime, include: :user, status: :accepted 
-    else 
-      return render json: { error: "Not authorized" }, status: :unauthorized 
+    # else 
+    #   return render json: { error: "Not authorized" }, status: :unauthorized 
+    # end
+  end
+
+  def favorites
+    anime = find_anime_by_fav
+    if anime === true 
+      render json: anime
+    else
+      render_not_found_response
     end
   end
+
+  def destroy
+    anime = Anime.find(params[:id])
+    if anime
+      anime.destroy
+      head :no_content
+    else
+      render_not_found_response
+    end
+  end 
+    
 
   private
     
@@ -35,7 +55,12 @@ class AnimesController < ApplicationController
     Anime.find_by(id: params[:id])
   end
 
+  def find_anime_by_fav
+    Anime.find_by(id: params[:favorites])
+  end
+
   def render_not_found_response
     render json: { error: "Anime not found" }, status: :not_found
   end
+
 end

@@ -24,6 +24,7 @@ Rails.application.routes.draw do
     # 
   get '/my-anime', to: 'animes#index'
   post '/new', to: 'animes#create'
+  
 
 
   # fallback route 

@@ -1,7 +1,7 @@
 import './App.css';
 import React, { useEffect, useState } from "react";
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import Home from "./components/home/Home";
+import Home from "./pages/home/Home";
 import Navbar from './components/NavBar/NavBar';
 import Login from './pages/Login';
 
@@ -27,7 +27,7 @@ function App() {
             {/* <Favorites user={user} setUser={setUser} /> */}
           </Route>
           <Route exact path="/signup">
-            {/* <Signup user={user} setUser={setUser} /> */}
+            {/* <Signup user={user} setUser={setUser} />  */}
           </Route>
           <Route exact path="/login">
             <Login user={user} onLogin={setUser} />

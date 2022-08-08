@@ -43,14 +43,14 @@ export default function NavBar({ user, setUser }) {
                         </li> */}
                     </ul>
                     <div className='user-div'>
-                      {user ? (
-                          <button onClick={handleLogoutClick} className="logout-button">Logout</button>
-                      ) : (
-                          <>
-                              {/* <Link to="/signup" className='user-link'>Signup</Link> */}
-                              <Link to="/login" className='user-link'>Login</Link>
-                          </>
-                      )}
+                        {user ? (
+                            <button onClick={handleLogoutClick} className="logout-button">Logout ({user.username})</button>
+                        ) : (
+                            <>
+                                {/* <Link to="/signup" className='user-link'>Signup</Link> */}
+                                <Link to="/login" className='user-link'>Login</Link>
+                            </>
+                        )}
                     </div>
             </nav>
         </div>

@@ -9,16 +9,19 @@ class AnimesController < ApplicationController
     anime = @current_user.animes.create!(anime_params)
     render json: anime, status: :created
   end
-    
+
+  def show 
+    anime = Anime.find(params[:id])
+    render json: anime 
+  end  
+
   def update
-    respond_to do |format|
-      if @anime.update(anime_params)
-        format.html { redirect_to @anime, notice: 'Anime was successfully updated.' }
-        format.json { render :show, status: :ok, location: @anime }
-      else
-        format.html { render :edit }
-        format.json { render json: @anime.errors, status: :unprocessable_entity }
-      end
+    anime = find_anime 
+    if @current_user.id == anime.user_id 
+      anime.update!(anime_params)
+      render json: anime, include: :user, status: :accepted 
+    else 
+      return render json: { error: "Not authorized" }, status: :unauthorized 
     end
   end
 
@@ -26,6 +29,10 @@ class AnimesController < ApplicationController
     
   def anime_params
     params.require(:anime).permit!
+  end
+
+  def find_anime
+    Anime.find_by(id: params[:id])
   end
 
   def render_not_found_response

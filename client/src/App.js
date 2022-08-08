@@ -6,6 +6,7 @@ import Navbar from './components/NavBar/NavBar';
 import Login from './pages/Login';
 import AnimeList from './pages/AnimeList';
 import NewAnime from './pages/NewAnime';
+import Favorites from './pages/Favorites';
 
 function App() {
   const [user, setUser] = useState(null);
@@ -32,7 +33,7 @@ function App() {
         <Switch>
           <Route exact path="/" component={Home} />
           <Route exact path="/favorites">
-            {/* <Favorites user={user} setUser={setUser} /> */}
+            <Favorites user={user} setUser={setUser} />
           </Route>
           <Route exact path="/signup">
             {/* <Signup user={user} setUser={setUser} />  */}

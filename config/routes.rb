@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   resources :users, only: [:show, :create]
 
   # resources :users, shallow: true do
-  resources :animes, only: [:index, :show, :create, :update]
+  resources :animes, only: [:index, :show, :create, :update, :destroy]
   # resources :favorites, only: [:index, :create]
   #   resources :watchlists, only: :index
   # end
@@ -24,7 +24,8 @@ Rails.application.routes.draw do
     # 
   get '/my-anime', to: 'animes#index'
   post '/new', to: 'animes#create'
-  
+
+  get '/favorites', to: 'animes#favorites'
 
 
   # fallback route 

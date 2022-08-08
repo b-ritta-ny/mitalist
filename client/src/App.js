@@ -4,6 +4,8 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Home from "./pages/home/Home";
 import Navbar from './components/NavBar/NavBar';
 import Login from './pages/Login';
+import AnimeList from './pages/AnimeList';
+import NewAnime from './pages/NewAnime';
 
 function App() {
   const [user, setUser] = useState(null);
@@ -32,8 +34,11 @@ function App() {
           <Route exact path="/login">
             <Login user={user} onLogin={setUser} />
           </Route>
-          <Route exact path="/animes">
-            {/* <Anime user={user} setUser={setUser} /> */}
+          <Route exact path="/my-anime">
+            <AnimeList user={user} setUser={setUser} />
+          </Route>
+          <Route exact path="/new">
+            <NewAnime user={user} />
           </Route>
         </Switch>
       </Router>

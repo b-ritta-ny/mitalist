@@ -9,6 +9,7 @@ import NewAnime from './pages/NewAnime';
 
 function App() {
   const [user, setUser] = useState(null);
+  const [animes, setAnimes] = useState([]);
 
   useEffect(() => { 
      //auto-login
@@ -18,6 +19,11 @@ function App() {
       }
     });
   }, []);
+
+  function handleAddAnime(anime) {
+    const updatedAnimes = [...animes, anime];
+    setAnimes(updatedAnimes);
+}
 
   return (
     <div className="App">
@@ -38,7 +44,7 @@ function App() {
             <AnimeList user={user} setUser={setUser} />
           </Route>
           <Route exact path="/new">
-            <NewAnime user={user} />
+            <NewAnime user={user} setUser={setUser} onAddAnime={handleAddAnime} />
           </Route>
         </Switch>
       </Router>

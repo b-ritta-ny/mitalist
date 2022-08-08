@@ -6,7 +6,7 @@ class AnimesController < ApplicationController
   end
     
   def create
-    anime = @current_user.anime.create!(anime_params)
+    anime = @current_user.animes.create!(anime_params)
     render json: anime, status: :created
   end
     
@@ -25,7 +25,7 @@ class AnimesController < ApplicationController
   private
     
   def anime_params
-    params.permit(:title)
+    params.require(:anime).permit!
   end
 
   def render_not_found_response

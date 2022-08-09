@@ -1,7 +1,7 @@
 import { useState } from "react";
 // import { useHistory } from "react-router";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import ReactMarkdown from "react-markdown";
 import { Button, FormField, Input, Label, Textarea } from "../styles";
 
@@ -218,7 +218,7 @@ function NewAnime({ user, onAddAnime }) {
     flex: 1;
     `;
 
-    const Checkbox = styled.input`
-    `;
+    // const Checkbox = styled.input`
+    // `;
 
 export default NewAnime;

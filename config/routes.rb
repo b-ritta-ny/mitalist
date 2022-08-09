@@ -7,6 +7,11 @@ Rails.application.routes.draw do
   # tester route
   # get '/hello', to: 'application#hello_world'
 
+  namespace :admin do
+    resources :users
+    resources :animes
+  end
+
   # user creation & authentication
   post "/signup", to: "users#create"
   post "/login", to: "sessions#create"

@@ -6,14 +6,13 @@ function Home() {
     <div className='homebox-container'>
       <div className='top-homebox'>
         <h1 className='welcome-title'>Welcome to Your Mitalist!</h1>
-        <h3>Keep track to all your watched and favorite anime here!</h3>
-        <h6 className='welcome-paragraph'>Duis aute irure dolor in reprehenderit in voluptate Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</h6>
+        <h3>Keep track of  all your watched and favorite anime!</h3>
+        <h6 className='welcome-paragraph'>時解競いの一高のば丸記際ロ田地こせ作世ぱ読応トラノ生止し新界キメ回減をらまフ名数ぜといリ過意浅添ほク。公23図だ小91哀やスめゅ騰38愛ハ成過初フヱニシ刑歴スりへも宙欺格ラユス済採ゃ授同ム碁束信好むふし。投よフぎ対旬オラ作銀リ雖時いレで院同げうざ際必メ作食オアコ渡電そばへで下対応つびず提間エナセ正形ミハコ無換カチエ健察セトノ紙衆オネ策禁ド庭23新出町ぱし。</h6>
       </div>
       <div className='mid-homebox'>
         <div className='mid-left-div'>
-          <p className='middle-paragraph'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore    etdolore magna aliqua.
-            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-            aute irure dolor in reprehenderit in voluptate Lorem ipsum dolor sit amet, consectetur adipiscing elit
+          <p className='middle-paragraph'>
+          口アスニ約提びさずへ漂転図あの藝名広しす章漂あっ迫検び欧倒ルみふあ熏現タオレサ読育ユエ実鎌く道意えぼンだ相2続輝レーも訃属ゆラひべ毎護そべ。外位フヘ出夢考ドち規暮よそね王回ラ幹共格70製法伏92方ユヨセア治供ス浜上く昇収なしおう由語ハ意79憂昌詩ちぼなト。藤ゆっあ策真オワヨ読県に首改アラ半調ヤトミヱ咲通シハト京跡わラ能毎ごぐ県容活品ソタネ康交ニ岩6上ワ修厘架肥ルこ。
           </p>
           
         </div>

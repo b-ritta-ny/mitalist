@@ -40,4 +40,16 @@
 body {
   background-image: url("https://img.freepik.com/free-vector/abstract-background-with-squares_23-2148995948.jpg?w=1800&t=st=1659862903~exp=1659863503~hmac=d8918ed52cff69a2b9995c929c96e11d3a92c7e6a11cb075110045b1c9fadc86");
   background-attachment: fixed;
+  animation: fadeInAnimation ease 3s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
+
+@keyframes fadeInAnimation {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }

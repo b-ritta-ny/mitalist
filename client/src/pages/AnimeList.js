@@ -75,9 +75,9 @@ function AnimeList({user, setUser}) {
       ) : (
         <>
           <h2>No anime series yet!</h2>
-          <Button as={Link} to="/new">
+          {/* <Button as={Link} to="/new">
             Log a new Anime
-          </Button>
+          </Button> */}
         </>
       )}
     </Wrapper>

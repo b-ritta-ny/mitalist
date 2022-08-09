@@ -2,7 +2,8 @@ class AnimesController < ApplicationController
   rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
     
   def index
-    render json: Anime.all
+    anime = @current_user.animes
+    render json: anime
   end
     
   def create

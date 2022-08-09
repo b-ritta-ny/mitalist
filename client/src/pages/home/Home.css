@@ -7,7 +7,7 @@
 }
 .top-homebox {
   width: 60%;
-  color: white;
+  color: black;
   height: 40vh;
   display: flex;
   align-self: center;
@@ -26,6 +26,7 @@
   font-weight: bolder;
   margin-top: 0;
   color: black;
+  padding-top: 1em;
 }
 .mid-left-div {
   margin: 15px;
